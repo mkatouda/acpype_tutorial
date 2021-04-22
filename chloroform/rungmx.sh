@@ -24,9 +24,9 @@ EOS
 # Energy minimization
 
 gmx grompp -f em.mdp -po em.out.mdp -c ${input}_box.gro -p ${input}.top -o em.tpr -maxwarn 10
-gmx mdrun -v -nt 1 -ntmpi 1 -deffnm em
+gmx mdrun -ntmpi 1 -ntomp 1 -v -deffnm em
 
 # Production MD
 
 gmx grompp -f md.mdp -po md.out.mdp -c em.gro -p ${input}.top -o md.tpr -maxwarn 10
-gmx mdrun -v -nt 1 -ntmpi 1 -deffnm md
+gmx mdrun -ntmpi 1 -ntomp 1 -v -deffnm md
